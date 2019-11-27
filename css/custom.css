@@ -1,0 +1,99 @@
+/*
+
+    Nuestro CSS para modificar la plantilla base
+
+*/
+
+td img {
+    height: 100px;
+    width: 100px;
+}
+
+form input[type="text"]:focus:valid, form input[type="url"]:focus:valid, form input[type="email"]:focus:valid {
+    color: #1cc88a;
+    background-color: #fff;
+    border-color: #bac8f3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(28,200,138,1);
+}
+
+form input[type="text"]:focus:invalid, form input[type="url"]:focus:invalid, form input[type="email"]:focus:invalid {
+    color: #e74a3b;
+    background-color: #fff;
+    border-color: #bac8f3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(231,74,59,1);
+}
+
+.bg-login-image {
+    background: url("/images/fondo-nuevo-480.png");
+}
+  
+.bg-register-image {
+    background: url("/images/fondo-login.jpg");
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.video-background-holder {
+    position: relative;
+    background-color: black;
+    height: calc(100vh - 72px);
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .video-background-holder video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .video-background-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .video-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  /*
+  *
+  * ==========================================
+  * FOR DEMO PURPOSES
+  * ==========================================
+  *
+  */
+  
+  code {
+    padding: 0 0.15rem;
+    background: #f5f5f5;
+    border-radius: 0.2rem;
+  }
+
+
+  

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>Nuevo disco</title>
 
   <base href="/">
 
@@ -18,7 +18,10 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="css/custom.css">
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -56,7 +59,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Interfaz
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -273,49 +276,83 @@
           <h1 class="h3 mb-2 text-gray-800"> Nuevo disco </h1>
           <p class="mb-4"> En este pagina puedes añadir un nuevo disco a la base de datos de la página.</p>
 
-          <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
-                  <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
+                  <div class="row justify-content">
+                    <div class="col-lg-6 col-sm-6 col-md-6">
                       <div class="p-5">
                         <div class="text-center">
                           <h1 class="h4 text-gray-900 mb-4">¡Añade un nuevo disco!</h1>
                         </div>
-                        <form class="user">
+                        <form action="nuevoDisco" method="POST" class="user"> <!-- Form nuevo disco -->
                           <div class="form-group">
-                              <input type="file" class="form-control form-control-user" id="exampleFirstName" placeholder="Cover">
+                            <label class="p-2"> Cover del disco </label>
+                              <input  type="text" 
+                                      class="form-control 
+                                      form-control-user" 
+                                      name="cover" 
+                                      onblur="cargarImagen(this.value)"
+                                      required 
+                                      pattern="^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$" 
+                                      placeholder="URL de la Cover (.jpg, .jpeg, .png, .gif)">
                           </div>
                           <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Titulo">
+                            <label class="p-2"> Titulo </label>
+                            <input  type="text" 
+                                    class="form-control form-control-user" 
+                                    name="titulo" 
+                                    placeholder="Titulo" 
+                                    required 
+                                    pattern=".{1,100}">
                           </div>
                           <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Grupo">
+                            <label class="p-2"> Grupo </label>
+                            <input  type="text" 
+                                    class="form-control form-control-user" 
+                                    name="grupo" 
+                                    placeholder="Grupo" 
+                                    required 
+                                    pattern=".{1,100}">
                          </div>
                          <div class="form-group">
-                            <input type="date" class="form-control form-control-user" id="exampleInputPassword" placeholder="Fecha">
+                           <label class="p-2">Fecha (TODO: https://jqueryui.com/datepicker/)</label>
+                            <input  type="date" 
+                                    class="form-control form-control-user" 
+                                    name="fecha" 
+                                    required>
                         </div>
-                          <a href="login.html" class="btn btn-primary btn-user btn-block">
-                            Register Account
-                          </a>
-                          <hr>
-                          <a href="index.html" class="btn btn-google btn-user btn-block">
-                            <i class="fab fa-google fa-fw"></i> Register with Google
-                          </a>
-                          <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                          </a>
-                        </form>
-                        <hr>
-                        <div class="text-center">
-                          <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
-                        <div class="text-center">
-                          <a class="small" href="login.html">Already have an account? Login!</a>
-                        </div>
+                            <input type="submit" value="Añadir disco" class="btn btn-primary btn-user btn-block">
+                        </form> <!-- Fin del form de nuevo disco-->
+                      
                       </div>
                     </div>
+                    <div class="col-lg-6 col-sm-6 col-md-6 bg-register-image" id="container-img">
+                    </div>
+
+                    <!-- Evento JavaScript para cargar imagen -->
+                    <script>
+
+                        function cargarImagen(url_imagen) 
+                        { 
+                          console.debug('url %o', url_imagen); // Para comprobar que llegan los datos
+
+                          if(url_imagen !== "") {
+
+                            let container = document.getElementById('container-img');
+
+                            // let imagen = '<img src="' + url_imagen + '" alt="imagen del disco">';
+
+                            // Cambiamos los estilos en linea del container
+                            container.style.background = "url(" + url_imagen + ")";
+                            container.style.backgroundPosition = "center";
+                            container.style.backgroundSize = "cover";
+
+                          }
+
+                         }
+                    
+                    </script>
                   </div>
                 </div>
               </div>          
